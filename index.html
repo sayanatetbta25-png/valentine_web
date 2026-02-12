@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For You ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #ff9ecf, #ffcce6);
+  overflow: hidden;
+  color: white;
+}
+
+.slide {
+  display: none;
+  padding: 60px;
+  animation: fade 1s ease-in-out;
+}
+
+.active { display: block; }
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  margin: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ff4da6;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ff1a8c;
+  transform: scale(1.1);
+}
+
+#noBtn { position: absolute; }
+
+img {
+  width: 220px;
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px white;
+}
+
+.flower {
+  position: absolute;
+  font-size: 24px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { top: -50px; }
+  to { top: 100vh; }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="slide active" id="slide1">
+  <h2>Will you be my Valentine? 💖</h2>
+  <button onclick="startMusic()">Yes 💕</button>
+  <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<div class="slide" id="slide2">
+  <h2>Hehe I knew it 😌💕</h2>
+  <button onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide" id="slide3">
+  <p>
+  You are the most beautiful part of my life.<br>
+  Every moment with you feels special and meaningful.<br><br>
+  Your smile makes my worst days better,<br>
+  and your voice is my favorite sound.<br><br>
+  I feel lucky and grateful to have someone as
+  caring, kind, and amazing as you.<br><br>
+  You are not just my love,
+  you are my happiness, my peace, and my forever 🌷💗🎀
+  </p>
+  <button onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide" id="slide4">
+  <h2>Why You Are So Special 💖</h2>
+  <p>
+  • You understand me.<br>
+  • You support me.<br>
+  • You make life beautiful.<br>
+  • You make me smile.<br>
+  • With you, everything feels complete.
+  </p>
+  <button onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide" id="slide5">
+  <h2>My Promise To You 🤍</h2>
+  <p>
+  • I will respect you.<br>
+  • I will support your dreams.<br>
+  • I will stand with you always.<br>
+  • I will care for you.<br>
+  • I will love you more every day.
+  </p>
+  <button onclick="nextSlide()">Final Surprise 🌹</button>
+</div>
+
+<div class="slide" id="slide6">
+  <h1>I LOVE YOU SOM ❤️</h1>
+  <img src="rose.jpg" alt="Rose">
+  <h2>Forever & Always 🌹</h2>
+  <h3>All I dream of… is your eyes ✨</h3>
+</div>
+
+<script>
+let current = 1;
+
+function startMusic() {
+  document.getElementById("bgMusic").play();
+  nextSlide();
+}
+
+function nextSlide() {
+  document.getElementById("slide" + current).classList.remove("active");
+  current++;
+  document.getElementById("slide" + current).classList.add("active");
+}
+
+function moveNo() {
+  let btn = document.getElementById("noBtn");
+  btn.style.top = Math.random() * 80 + "%";
+  btn.style.left = Math.random() * 80 + "%";
+}
+
+// Flower rain
+for(let i=0;i<30;i++){
+  let flower=document.createElement("div");
+  flower.innerHTML="🌸";
+  flower.className="flower";
+  flower.style.left=Math.random()*100+"vw";
+  flower.style.animationDuration=(Math.random()*3+3)+"s";
+  document.body.appendChild(flower);
+}
+</script>
+
+</body>
+</html>
